@@ -5,8 +5,11 @@ import {motion} from 'framer-motion';
 import { fadeIn, defaultViewport } from '../../motion/Motion';
 
 const Service = () => {
+    const token = localStorage.getItem('userToken');
+
     return (
-        <div className='max-w-7xl px-4 py-4 mx-auto'>
+        <div className='max-w-7xl px-4 py-16 mx-auto'>
+            {/* <p>this is the user login token {token}</p> */}
             <div className='flex flex-col items-center gap-0'>
                 <motion.p
                 variants={fadeIn('up', 0.2)}

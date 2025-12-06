@@ -1,6 +1,5 @@
 import React from 'react';
 import AbCard from './AbCard';
-import { Contributor } from '../../../public/Contributor';
 import { motion } from 'framer-motion'
 import { fadeIn, slideIn, defaultViewport } from '../../motion/Motion';
 
@@ -9,7 +8,7 @@ const Ab = () => {
 
 
     return (
-        <div className='max-w-7xl px-4 py-8 mx-auto'>
+        <div className='max-w-7xl px-4 py-12 mx-auto'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                 <motion.img
                     variants={fadeIn('right', '0.2')}
@@ -45,13 +44,6 @@ const Ab = () => {
                     </div>
                 </div>
             </div>
-            <motion.p
-            variants={fadeIn('up', '.2')}
-                        initial={'hidden'}
-                        whileInView={'show'}
-                        viewport={defaultViewport}
-             className='mt-20 text-2xl sm:text-3xl lg:text-3xl font-medium text-orange-600 pb-8 '>Top Contributor</motion.p>
-            <AbCard contributor={Contributor}></AbCard>
         </div>
     );
 };

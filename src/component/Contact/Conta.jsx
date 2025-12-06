@@ -26,7 +26,7 @@ const Conta = () => {
     }
     
     return (
-        <div className='max-w-7xl px-3 py-8 mx-auto'>
+        <div className='max-w-7xl px-3 py-12 mx-auto'>
             <div className='px-2 grid grid-cols-1 md:grid-cols-2 gap-4'>
                 <motion.img
                 variants={fadeIn('right', 0.2 )}

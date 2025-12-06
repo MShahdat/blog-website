@@ -10,6 +10,7 @@ import Card from './Card.jsx';
 import { motion } from 'framer-motion';
 import { fadeIn, defaultViewport } from '../../motion/Motion.js';
 
+
 const Blog = () => {
 
     console.log('imported data', Blogs)
@@ -64,7 +65,7 @@ const Blog = () => {
     }
 
     return (
-        <div className=' px-4 max-w-7xl py-4 mx-auto'>
+        <div className=' px-4 max-w-7xl py-12 mx-auto'>
             {/* <div className='lg:hidden'>
                 <Sidebar blog = {allBlog}></Sidebar>
             </div> */}
@@ -104,7 +105,12 @@ const Blog = () => {
             </div> */}
 
 
-            <div>
+            <motion.div
+                variants={fadeIn('up', '.25')}
+                initial={'hidden'}
+                whileInView={'show'}
+                viewport={defaultViewport}
+            >
                 {totalPage > 1 ? (
                     <ReactPaginate
                         previousLabel='Pre'
@@ -136,7 +142,7 @@ const Blog = () => {
                         disabledClassName='opacity-0 cursor-not-allowed'
                     ></ReactPaginate>
                 ) : null}
-            </div>
+            </motion.div>
         </div>
     );
 };

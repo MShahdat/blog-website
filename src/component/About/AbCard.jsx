@@ -71,40 +71,48 @@ const AbCard = (props) => {
 
 
     return (
-        <motion.div
-            variants={fadeIn('up', '.4')}
-            initial={'hidden'}
-            whileInView={'show'}
-            viewport={defaultViewport}
-            className='relative'>
-            <Slider ref={slickRef} {...settings} >
-                {props.contributor.map((con, idx) => (
-                    <div
-                        key={idx} className='px-1'>
-                        <div className='bg-white shadow rounded overflow-hidden'>
-                            <img src={con.url} className='w-full h-48 object-cover rounded-t'></img>
-                            <div className='bg-orange-700 text-white py-1 px-2'>
-                                <h2 className='text-lg font-medium'>{con.name}</h2>
-                                <h2 className='mt-1 text-[16px]'>{con.role}</h2>
-                                <div className='mt-0 flex text-gray-300 items-center gap-2 '>
-                                    <LuNotebookPen />
-                                    <p className='text-sm pb-2'>{con.published} Article Published</p>
+        <div className='max-w-7xl px-4 py-16 mx-auto'>
+            <motion.p
+            variants={fadeIn('up', '.2')}
+                        initial={'hidden'}
+                        whileInView={'show'}
+                        viewport={defaultViewport}
+             className=' text-2xl sm:text-3xl lg:text-3xl font-medium text-orange-600 pb-8 '>Top Contributor</motion.p>
+            <motion.div
+                variants={fadeIn('up', '.4')}
+                initial={'hidden'}
+                whileInView={'show'}
+                viewport={defaultViewport}
+                className='relative'>
+                <Slider ref={slickRef} {...settings} >
+                    {props.contributor.map((con, idx) => (
+                        <div
+                            key={idx} className='px-1'>
+                            <div className='bg-white shadow rounded overflow-hidden'>
+                                <img src={con.url} className='w-full h-48 object-cover rounded-t'></img>
+                                <div className='bg-orange-700 text-white py-1 px-2'>
+                                    <h2 className='text-lg font-medium'>{con.name}</h2>
+                                    <h2 className='mt-1 text-[16px]'>{con.role}</h2>
+                                    <div className='mt-0 pb-1 flex text-gray-300 items-center gap-2 '>
+                                        <LuNotebookPen />
+                                        <p className='text-sm'>{con.published} Article Published</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                ))}
-            </Slider>
+                    ))}
+                </Slider>
 
-            <div className='flex items-center justify-between absolute left-3 right-3 top-[40%]'>
-                <div onClick={() => slickRef.current.slickPrev()} className='bg-gray-200 px-1 py-1 rounded-full'>
-                    <RiArrowLeftLine className='text-black' />
+                <div className='flex items-center justify-between absolute left-3 right-3 top-[40%]'>
+                    <div onClick={() => slickRef.current.slickPrev()} className='bg-gray-200 px-1 py-1 rounded-full'>
+                        <RiArrowLeftLine className='text-black' />
+                    </div>
+                    <div onClick={() => slickRef.current.slickNext()} className='bg-gray-200 px-1 py-1 rounded-full'>
+                        <RiArrowRightLine className='text-black' />
+                    </div>
                 </div>
-                <div onClick={() => slickRef.current.slickNext()} className='bg-gray-200 px-1 py-1 rounded-full'>
-                    <RiArrowRightLine className='text-black' />
-                </div>
-            </div>
-        </motion.div>
+            </motion.div>
+        </div>
     );
 };
 
