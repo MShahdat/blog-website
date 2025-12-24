@@ -77,14 +77,14 @@ const Testimonial = () => {
           whileInView={'show'}
           viewport={defaultViewport}
           className='flex flex-col items-center py-8'>
-          <h2 className='-mt-5 text-3xl md:text-4xl font-bold text-black/80'>Our Testimonial</h2>
+          <h2 className='-mt-5 text-2xl md:text-4xl font-bold text-orange-600'>Our Testimonial</h2>
         </motion.div>
         <div className='relative pb-8'>
           <Slider ref={slickRef} {...settings}>
             {
               testi.map((te, idx) => (
                 <div key={idx} className='mt-2 lg:mt-8 sm:px-8 md:px-20 lg:px-30 flex flex-col items-center justify-center'>
-                  <img src={te.image} className='w-32 h-32 mx-auto object-cover rounded-full border-4 border-red-600'></img>
+                  <img src={te.image} className='w-32 h-32 mx-auto object-cover rounded-full border-4 border-orange-600'></img>
                   <p className='text-center mt-6 text-md sm:text-lg lg:text-xl text-black/70'>{te.msg}</p>
                   <div className='mt-4 flex items-center gap-1 justify-center'>
                     {[...Array(te.rating)].map((_, i) => (
@@ -107,7 +107,7 @@ const Testimonial = () => {
                 <button
                   key={i}
                   onClick={() => slickRef.current && slickRef.current.slickGoTo(i)}
-                  className={`w-3 h-3 rounded-full transition-colors duration-150 ${currentSlide === i ? 'bg-red-600' : 'bg-gray-300'}`}
+                  className={`w-3 h-3 rounded-full transition-colors duration-150 ${currentSlide === i ? 'bg-orange-600' : 'bg-gray-300'}`}
                   aria-label={`Go to slide ${i + 1}`}
                 />
               ))}

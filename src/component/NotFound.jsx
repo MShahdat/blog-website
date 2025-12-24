@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
     return (
-        <section className="w-full bg-white py-8">
+        <section className="w-full bg-white py-8 relative">
             <div className="max-w-5xl mx-auto">
                 {/* GIF Background */}
                 <div
@@ -12,6 +13,9 @@ const NotFound = () => {
                             "url('https://cdn.dribbble.com/users/722246/screenshots/3066818/404-page.gif')",
                     }}
                 >
+                </div>
+                <div className="absolute left-1/2 top-12 -translate-x-1/2 whitespace-nowrap">
+                    <Link to={'/'} className="bg-black/5  hover:text-orange-600 duration-300 text-black font-medium py-1 px-4 text-center rounded ">Go to home</Link>
                 </div>
             </div>
         </section>

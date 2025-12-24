@@ -33,7 +33,7 @@ const Conta = () => {
                 initial = {'hidden'}
                 whileInView={'show'}
                 viewport={defaultViewport}
-                src='https://plus.unsplash.com/premium_photo-1669658981858-b2ae0d7581a3?q=80&w=854&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' className='w-full mt-2 h-68 sm:h-110 rounded object-cover'></motion.img>
+                src='https://plus.unsplash.com/premium_photo-1682309572625-791e25352998?q=80&w=1212&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' className='w-full mt-2 h-68 sm:h-110 rounded object-cover'></motion.img>
                 <motion.div
                 variants={fadeIn('left', 0.2 )}
                 initial = {'hidden'}

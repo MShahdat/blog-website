@@ -6,9 +6,6 @@ import {motion} from 'framer-motion';
 import { fadeIn, defaultViewport } from '../motion/Motion';
 import {
   getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  FacebookAuthProvider,
   createUserWithEmailAndPassword,
   updateProfile 
 } from "firebase/auth";
@@ -20,6 +17,8 @@ const Singup = ({setSignIn, setSignUp, setUserIn}) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
+
+  const auth = getAuth(app);
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -66,75 +65,12 @@ const Singup = ({setSignIn, setSignUp, setUserIn}) => {
 
   }
 
-  const auth = getAuth(app);
-    const provider = new GoogleAuthProvider();
-    const providerFb = new FacebookAuthProvider();
-    providerFb.addScope('public_profile');
-    providerFb.addScope('email');
-
-    const handleGoogle = () => {
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          const user = result.user;
-          console.log('Login successful (Google)');
-          console.log(user);
-          console.log(user.accessToken)
   
-          const userInfo = {
-            name: user.displayName,
-            email: user.email,
-            photo: user.photoURL,
-            uid: user.uid,
-          }
-  
-          toast.success("Login Successfully")
-          setSignUp(false)
-          localStorage.setItem('blog_user', JSON.stringify(userInfo))
-          window.dispatchEvent(new Event('storage'))
-  
-        })
-        .catch((error) => {
-          console.log('Login failed (Google)');
-          toast.error('Login failed')
-          console.log(error.message);
-        });
-    };
-
-    const handleFb = () => {
-        signInWithPopup(auth, providerFb)
-          .then((result) => {
-            // The signed-in user info.
-            const user = result.user;
-            console.log(user)
-            toast.success("Sign successfully!")
-            setSignUp(false)
-    
-            const userInfo = {
-              name: user.displayName,
-              email: user.email,
-              photo: user.photoURL,
-              uid: user.uid,
-            }
-            
-            localStorage.setItem('blog_user', JSON.stringify(userInfo))
-            window.dispatchEvent(new Event('storage'));
-            
-          })
-          .catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            toast.error('Facebook singin failed');
-            console.log(errorMessage)
-          });
-    
-      }
-
 
   return (
     <div
     className='flex items-center justify-center bg-black/20 h-screen fixed inset-0 z-40'>
-      <div className='bg-black/10 backdrop-blur-3xl text-center h-108 lg:h-108 w-[300px] sm:w-[400px] lg:w-[500px] rounded shadow-2xl text-black relative'>
+      <div className='bg-black/10 backdrop-blur-3xl text-center h-88 lg:h-96 w-[300px] sm:w-[400px] lg:w-[500px] rounded shadow-2xl text-black relative'>
         <RxCross2 onClick={() => {
           setSignUp(false)
         }} className='absolute right-2 top-2 text-white size-6' />
@@ -151,19 +87,7 @@ const Singup = ({setSignIn, setSignUp, setUserIn}) => {
 
           <button type='submit' className='mt-2 bg-red-600 px-2 py-2 rounded w-5/6 lg:w-4/5 text-white font-bold'>Sign Up</button>
         </form>
-
-        <div className='mt-4 px-16'>
-          <p className='text-white'>Or Sign up by,</p>
-          <div className='flex gap-6 items-center justify-center mt-2'>
-            <div className='cursor-pointer'>
-              <FcGoogle onClick={handleGoogle} className='size-9' />
-            </div>
-            <div className='cursor-pointer'>
-              <FaFacebook onClick={handleFb} className='size-8 text-blue-600' />
-            </div>
-          </div>
-        </div>
-
+        
         <div className='text-white mt-2'>
           <p>Already have an Account? <span onClick={() => {
             setSignIn(true)

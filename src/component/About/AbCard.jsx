@@ -77,7 +77,7 @@ const AbCard = (props) => {
                         initial={'hidden'}
                         whileInView={'show'}
                         viewport={defaultViewport}
-             className=' text-2xl sm:text-3xl lg:text-3xl font-medium text-orange-600 pb-8 '>Top Contributor</motion.p>
+             className=' text-2xl  md:text-4xl font-bold text-orange-600 pb-8 text-center '>Top Contributor</motion.p>
             <motion.div
                 variants={fadeIn('up', '.4')}
                 initial={'hidden'}

@@ -9,14 +9,15 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   FacebookAuthProvider,
-  signInWithEmailAndPassword 
+  signInWithEmailAndPassword
 } from "firebase/auth";
 
 import { app } from '../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
 
+
 const Signin = ({ setSignIn, setSignUp, userIn, setUserIn }) => {
-  
+
   const navigate = useNavigate();
 
   console.log(userIn)
@@ -36,7 +37,6 @@ const Signin = ({ setSignIn, setSignUp, userIn, setUserIn }) => {
         const user = result.user;
         console.log('Login successful (Google)');
         console.log(user);
-        console.log(user.accessToken)
 
         const userInfo = {
           name: user.displayName,
@@ -78,12 +78,15 @@ const Signin = ({ setSignIn, setSignUp, userIn, setUserIn }) => {
         window.dispatchEvent(new Event('storage'));
         navigate('/')
       })
-      .catch((error) => {
+      .catch((err) => {
         // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        toast.error('Facebook singin failed');
-        console.log(errorMessage)
+        if (err.code === "auth/account-exists-with-different-credential") {
+          toast.error('auth/account-exists-with-different-credential')
+        } else {
+          console.log(err)
+          toast.error('Sing in failed!')
+        }
+
       });
 
   }

@@ -49,7 +49,7 @@ const BlogDetail = () => {
 
     const navigate = useNavigate();
 
-    const url = 'https://plus.unsplash.com/premium_photo-1661930645394-9d46a620a4e0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    const url = 'https://images.unsplash.com/photo-1719885159993-8df724026d4b?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 
     return (
         <>
@@ -96,7 +96,7 @@ const BlogDetail = () => {
                                 initial = {'hidden'}
                                 whileInView={'show'}
                                 viewport={defaultViewport}
-                    className='sm:text-[18px] md:text-[19px] lg:text-md xl:text-[19px] tracking-wide pb-4 px-4 mt-4'>
+                    className='sm:text-[18px] md:text-[19px] lg:text-md xl:text-[18px] leading-relaxed tracking-wide pb-4 px-4 mt-4'>
                         <p>{blog?.content}</p><br></br>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae architecto perspiciatis facere repudiandae illo quia aperiam doloribus, eos quaerat omnis? Ut tempore nostrum, velit consequuntur voluptates ex id obcaecati omnis?</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia accusantium non a impedit praesentium cum dolores fuga ipsa aperiam delectus. Dolore, enim cupiditate voluptatibus quo vero harum facilis vitae, necessitatibus voluptate veritatis tempore distinctio, tenetur sit delectus eius? Est dolorum obcaecati minus provident animi quas perferendis fuga vero, ullam numquam ipsum officia sint, autem dolore quaerat et quod, placeat inventore suscipit? Quia, praesentium harum. Quos accusantium quidem distinctio magnam quasi ut laboriosam esse fuga eveniet debitis exercitationem atque enim magni, officiis quae repellendus illo sed, fugit earum explicabo necessitatibus est. Ea quas aliquam earum ad! Ea maxime odio reiciendis ipsum?</p>

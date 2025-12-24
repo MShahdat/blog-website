@@ -12,7 +12,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { app } from '../firebase/firebase';
 import { toast } from 'react-toastify'
 
-const Nav = ({open, setOpen, setSignIn, setSignUp }) => {
+const Nav = ({ open, setOpen, setSignIn, setSignUp }) => {
 
     const [token, setToken] = useState(localStorage.getItem('blog_user'));
 
@@ -20,7 +20,7 @@ const Nav = ({open, setOpen, setSignIn, setSignUp }) => {
         { path: '/', link: 'Home' },
         { path: '/blogs', link: 'Blogs' },
         { path: '/services', link: 'Services' },
-        {path: '/about', link: 'About'},
+        { path: '/about', link: 'About' },
         { path: '/contact', link: 'Contact' },
     ]
 
@@ -33,6 +33,7 @@ const Nav = ({open, setOpen, setSignIn, setSignUp }) => {
             localStorage.removeItem('blog_user');
             setToken(null)
             window.dispatchEvent(new Event('storage'))
+            setOpen(!open)
         }).catch((error) => {
             toast.error('Logout failed')
         });
@@ -49,8 +50,7 @@ const Nav = ({open, setOpen, setSignIn, setSignUp }) => {
 
 
     return (
-        <div
-            className='bg-[#020120] text-white sticky left-0 top-0 z-50'>
+        <div className='bg-[#020120] text-white sticky left-0 top-0 z-50'>
             <motion.nav
                 variants={fadeIn('down', '.3')}
                 initial='hidden'
@@ -59,7 +59,7 @@ const Nav = ({open, setOpen, setSignIn, setSignUp }) => {
 
                 className='max-w-7xl px-4 py-4 mx-auto flex items-center justify-between'>
                 <Link to={'/'} className='text-2xl sm:text-2xl lg:text-3xl font-bold'>Design<span className='text-orange-700'>DK</span></Link>
-                <div className='flex items-center gap-6'>
+                <div className='flex items-center gap-4 lg:gap-6'>
                     {navitem.map((item, idx) => {
                         return (
                             <NavLink key={idx} to={item.path} className={({ isActive }) => `hidden md:block text-lg ${isActive ? 'text-orange-500' : ''}`}>{item.link}</NavLink>
@@ -69,35 +69,37 @@ const Nav = ({open, setOpen, setSignIn, setSignUp }) => {
                     }
                 </div>
                 <div className=''>
-                    <div className=' flex items-center gap-5 '>
+                    <div className=' flex items-center gap-3 lg:gap-4 '>
                         <a href='https://www.facebook.com/business/tools/meta-business-suite'><FaMeta className='size-5' /></a>
                         <a href='https://www.linkedin.com/'><FaLinkedin className='size-5' /></a>
                         <a href='https://x.com/'><FaTwitter className='size-5' /></a>
 
-                            {
-                                token &&
-                                <img src={JSON.parse(token).photo} className=' h-8 w-8 object-cover rounded-full'></img>
-                            }
+                        {
+                            token &&
+                            <Link to={'/'}>
+                            <img src={JSON.parse(token).photo} className=' h-8 w-8 object-cover rounded-full'></img>
+                            </Link>
+                        }
 
-                            {
-                                !token ? (
-                                    <div onClick={() => {
-                                        setSignIn(true)
-                                    }} className='px-3 py-1 bg-orange-700 font-semibold rounded hidden md:block hover:bg-white hover:text-orange-600'>
-                                        <button>Sign in</button>
-                                    </div>
-                                ) : (
-                                    <div
-                                        onClick={() => {
-                                            console.log('logout button clicked')
-                                            logOut()
+                        {
+                            !token ? (
+                                <div onClick={() => {
+                                    setSignIn(true)
+                                }} className='px-3 py-1 bg-orange-700 font-semibold rounded hidden md:block hover:bg-white hover:text-orange-600'>
+                                    <button>Sign in</button>
+                                </div>
+                            ) : (
+                                <div
+                                    onClick={() => {
+                                        console.log('logout button clicked')
+                                        logOut()
 
-                                        }}
-                                        className='px-3 py-1 bg-orange-700 font-semibold rounded hidden md:block hover:bg-white hover:text-orange-600'>
-                                        <button>Sign out</button>
-                                    </div>
-                                )
-                            }
+                                    }}
+                                    className='px-3 py-1 bg-orange-700 font-semibold rounded hidden md:block hover:bg-white hover:text-orange-600'>
+                                    <button>Sign out</button>
+                                </div>
+                            )
+                        }
 
                         <div onClick={() => {
                             setSignIn(false)
@@ -111,7 +113,7 @@ const Nav = ({open, setOpen, setSignIn, setSignUp }) => {
 
             {/* for mobile */}
 
-            <div div className={`${open ? 'block' : 'hidden'} md:hidden`}>
+            <div className={`${open ? 'block' : 'hidden'} md:hidden`}>
                 <div className='flex flex-col gap-2 px-4 sm:px-8 mt-0 pt-2 pb-4 bg-orange-700  text-gray-100'>
                     {
                         navitem.map((item, idx) => {
